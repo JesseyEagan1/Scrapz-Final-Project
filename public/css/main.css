@@ -1,0 +1,251 @@
+.background {
+	background-color: #FFE17F ;
+
+}
+body {
+	padding-top: 6rem;
+}
+
+.spacer {
+	padding-top: 10rem;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #FFFFFF;
+    margin-top: 1.5rem;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+	color: #FFE17F !important;
+
+}
+.navbar-default {
+	background-color: #95D5D7;
+	border-color: #FFFFFF;
+	margin-bottom: 0px;
+/*	margin-top: 3rem;*/
+	font-size: 22px;
+	border-radius: 0;
+	height: 8rem;
+
+
+}
+/*.brand {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width 
+    display: block;
+}*/
+
+
+.mainHeading {
+	background-color: #878787;
+	/*height: 25rem;*/
+
+}
+
+.mainLogo {
+	/*margin-top: 5rem;*/
+	display: block;
+	margin: 0 auto;
+	max-width: 200px;
+	margin-top: 10px;
+}
+
+.logoContainer {
+	position: absolute;
+	top: 0;
+	margin: 0 45%;
+	z-index: 10;
+}
+.logIn {
+	float: right;
+
+}
+
+.signUpLink {
+
+	color: white;
+}
+
+
+
+/*.navText {
+	color: #3CA198;*/
+}
+.craftsss {
+	border-top: 1px solid gray;
+	padding-top: 25px;
+	/*margin-left: -50px;*/
+	margin: 0 auto;
+
+}
+
+.buildACraft {
+font-size: 18px;
+font-weight: bold;
+display: inline-block;
+margin: 0 auto;
+
+}
+
+.buildACraft .small {
+font-size: 12px;
+font-weight: normal;
+}
+
+
+.indentParagraph1 {
+	padding-left: 12%;
+}
+/*.indentParagraph2 {
+	padding-left: 5%;
+}*/
+
+.thumbnail {
+	display: inline-block;
+	height: 250px;
+	width: 250px;
+	margin-bottom: 0;
+
+}
+
+.craftTitle {
+	display: inline-block;
+	font-family: Georgia, Serif;
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 75px;
+	width:250px;
+	text-align: center;
+	
+	
+
+}
+.description {
+
+
+}
+
+.craftDisplay {
+	display: inline-block;
+	margin: 0 auto;
+	padding: 0;
+	vertical-align: top;
+	text-align: center;
+
+	/*margin-left: 50px;*/
+}
+
+
+.submitSupplies {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+/*.suppliesSearch {
+	border-bottom: 1px solid gray;
+
+
+}
+*/
+/*@media (min-width:768px) { 
+	.navbar > .container {
+	    text-align: center;
+	    display: inline-block;
+	}
+
+	.collapse.navbar-collapse#centerednav {
+	    float: none;
+	    display: inline-block !important;
+	    width: auto;
+	    clear: none;
+	}
+}*/
+.select-style {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: #fff;
+
+    
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}
+.label {
+	color: black;
+	font-size: 14px;
+}
+
+.signup1{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 150px;
+    text-align: right;
+}
+.signup2 {
+  display: inline-block;
+  float: left;
+  margin-bottom: 10px;
+}
+
+.craftHeader {
+	margin-top: 2rem;
+	margin-bottom: 3rem;
+	text-align: center;
+	font-size: 2.5rem;
+	font-weight: bold;
+
+}
+.submitCraftPage {
+	background-color: #e3e3e3;
+}
+
+.craftSubmitBtn {
+	margin-top: 1rem;
+	
+}
+/*.craftFinder {
+	text-align: center;
+}
+*/
+
+.form-group {
+	/*margin: 10px;*/
+	display: inline-block;
+	left: 140px;
+	/*padding: 40px;*/
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
