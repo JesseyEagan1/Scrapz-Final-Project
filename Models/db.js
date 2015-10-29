@@ -1,5 +1,5 @@
 var mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/scrapz')
+
 
 var Craft = mongoose.model('Craft', {
 	craftThumbnail 	: {type: String, required : true},

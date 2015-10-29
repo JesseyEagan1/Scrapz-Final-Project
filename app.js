@@ -5,9 +5,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var uiRouter = require('angular-ui-router');
+var mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/scrapz')
 
 
-
+var db = require('./Models/db.js')
 
 var app = express();
 
@@ -64,18 +67,34 @@ app.get('/auth/logout', authenticationController.logout);
 // This route is designed to send back the logged in user (or undefined if they are NOT logged in)
 app.get('/api/me', function(req, res){
   res.send(req.user)
+});
+
+app.get('/crafts/:id', function(req, res){
+  res.sendFile('/html/craft.html', {root : './public'})
+});
+
+app.get('/api/crafts/:craftID', function(req, res){
+  Craft.findOne({_id : req.params.craftID}, function(err, craft){
+   res.send(craft) 
+
+  })
 })
 
-
+app.get('/api/get-crafts', function(req, res){
+  db.Craft.find({}, function(err, document){
+    console.log(document)
+    res.send(document)
+  })
+})
 // ***** IMPORTANT ***** //
 // By including this middleware (defined in our config/passport.js module.exports),
 // We can prevent unauthorized access to any route handler defined after this call
 // to .use()
-app.use(passportConfig.ensureAuthenticated);
+// app.use(passportConfig.ensureAuthenticated);
 
 
 app.get('/', function(req, res){
-  res.sendFile('/html/home.html', {root : './public/html'})
+  res.sendFile('/html/index.html', {root : './public'})
 });
 // app.get('/superSensitiveDataRoute')
 

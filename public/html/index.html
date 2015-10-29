@@ -5,14 +5,15 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<title>Craft Database</title>
+		<title>Scrapz</title>
 		
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.6/angular.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
-		<link rel="stylesheet" href="main.css">
+		<link rel="stylesheet" href="/css/main.css">
 	</head>
 
 	<body class="background" ng-controller="mainController">
@@ -113,7 +114,7 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12 text-left indentParagraph1" >
-						<div class="buildACraft">Build-A-Craft <span class="small">(find crafts with supplies you have on hand)</span> </div>
+						<div class="buildACraft">Build-A-Craft<span class="small">(find crafts with supplies you have on hand)</span> </div>
 							<p class="indentParagraph2" >Add your supplies here: </p>
 
 					</div>
@@ -158,7 +159,7 @@
 			<div class="row">
 				<div ng-repeat="object in crafts"  class="col-md-4 craftDisplay">
 					<div ng-show="object.craftDisplay" >
-						<img ng-click="open($index)" data-toggle="modal" data-target="#craftModal" class ="thumbnail" ng-src="{{object.craftThumbnail}}"/>
+						<a href="/crafts/{{object._id}}"><img class ="thumbnail" ng-src="{{object.craftThumbnail}}"/></a>
 						<div class= "craftTitle">{{object.craftName}}</div> 
 					</div>
 				</div>
@@ -171,7 +172,7 @@
 	    <div class="modal-dialog">
 	        <div class="modal-content">
 	            <div class="modal-header">
-	                <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	                	<h3>{{selectedCraft.craftName}}</h3>
 				 			<img class = "thumbnail" ng-src="{{selectedCraft.craftThumbnail}}"/>
 	            </div>
@@ -237,6 +238,6 @@
 	  <div class="panel-footer">&copy; 2015 Jessey Eagan</div>
 	</div>
 
-	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="/js/main.js"></script>
 	</body>
 </html>
