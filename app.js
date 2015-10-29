@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 // var uiRouter = require('angular-ui-router');
 var mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/scrapz')
+var bcrypt = require('bcryptjs')
 
 
 var db = require('./Models/db.js')
@@ -19,9 +20,7 @@ app.set('port', port);
 
 var session = require('express-session');
 var passport = require('passport');
-
-var passportConfig = require('./config/passport'); // Load in our passport configuration that decides how passport actually runs and authenticates
-
+var LocalStrategy = require('passport-local').Strategy;
 
 // Session Setup
 app.use(session({
@@ -30,11 +29,45 @@ app.use(session({
   saveUninitialized: false
 }));
 
+
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+passport.deserializeUser(function(id, done) {
+    db.User.findById(id, function(err, user) {
+        done(err, user);
+    });
+});
+
 // Hook in passport to the middleware chain
 app.use(passport.initialize());
 
 // Hook in the passport session management into the middleware chain.
 app.use(passport.session());
+
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+        db.User.findOne({ username: username }, function (err, user) {
+            if (err) { return done(err); }
+            if (!user) {
+                return done(null, false, { message: 'Incorrect username.' });
+            }
+            // If we got this far, then we know that the user exists. But did they put in the right password?
+            bcrypt.compare(password, user.password, function(error, response){
+                if (response === true){
+                    return done(null,user)
+                }
+                else {
+                    return done(null, false)
+                }
+            })
+        });
+    }
+));
+
+
+
 
 
 // uncomment after placing your favicon in /public
@@ -49,20 +82,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/users', users);
 
 
-// Routes \\
-var authenticationController = require('./controllers/authentication');
-
-// Our get request for viewing the login page
-app.get('/auth/login', authenticationController.login);
-
-// Post received from submitting the login form
-app.post('/auth/login', authenticationController.processLogin);
-
-// Post received from submitting the signup form
-app.post('/auth/signup', authenticationController.processSignup);
-
-// Any requests to log out can be handled at this url
-app.get('/auth/logout', authenticationController.logout);
 
 // This route is designed to send back the logged in user (or undefined if they are NOT logged in)
 app.get('/api/me', function(req, res){
@@ -74,8 +93,8 @@ app.get('/crafts/:id', function(req, res){
 });
 
 app.get('/api/crafts/:CraftID', function(req, res){
-  // console.log('/api/crafts/:craftID')
-  db.Craft.findOne({_id : req.params.craftID}, function(err, craft){
+  console.log(req.params.CraftID + "blah")
+  db.Craft.findOne({_id : req.params.CraftID}, function(err, craft){
    
    res.send(craft) 
 
@@ -84,9 +103,38 @@ app.get('/api/crafts/:CraftID', function(req, res){
 
 app.get('/api/get-crafts', function(req, res){
   db.Craft.find({}, function(err, document){
-    console.log(document)
+    // console.log(document)
     res.send(document)
   })
+})
+
+app.post('/signup', function(req, res){
+    bcrypt.genSalt(10, function(error, salt){
+        bcrypt.hash(req.body.password, salt, function(hashError, hash){
+            var newUser = new db.User({
+                firstName : req.body.firstName,
+                lastName  : req.body.lastName,
+                email     : req.body.email, 
+                password  : hash
+
+            });
+            newUser.save(function(saveErr, user){
+                if ( saveErr ) { res.send({ err:saveErr }) }
+                else { 
+                    req.login(user, function(loginErr){
+                        if ( loginErr ) { res.send({ err:loginErr }) }
+                        else { res.send({success: 'success'}) }
+                    })
+                }
+            })
+            
+        })
+    })
+})
+
+app.post('/login', function(req, res){
+  console.log("string", req.body)
+
 })
 // ***** IMPORTANT ***** //
 // By including this middleware (defined in our config/passport.js module.exports),

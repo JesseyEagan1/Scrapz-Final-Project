@@ -1,126 +1,19 @@
-<!DOCTYPE html>
-<html ng-app="craftApp">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Craft Form</title>
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.6/angular.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
-		<link rel="stylesheet" href="/css/main.css">
-</head>
-	<body class="submitCraftPage" ng-controller="mainController">
-		<!-- <div class="mainHeading">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-xs-12">
-						<img class="img-responsive text-center headerContent" src="media/LGscrapzlogo.png">
-					</div>
-				</div>
-			<!-	 
-			</div>
-		</div> -->
-	<!-- ====================Fixed navigation bar=======================================-->
 
-		
-			<div class="navbar navbar-default" role="navigation">
-		  		<div class="container-fluid">
-		  			<div class="navbar-header">
-		  				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBarCollapse" aria-expanded="false">
-		  					<span class="sr-only">Toggle Navigation</span>
-		  					<span class="icon-bar"></span>
-		  					<span class="icon-bar"></span>
-		  					<span class="icon-bar"></span>
-		  				</button>
-		  			</div>
-		  			<div class=" navbar-collapse collapse navBarCollapse" id="navBarCollapse">
-		  				
-		      			<ul class="nav navbar-nav col-md-6">
-							<li class="navBarBtns"ng-click="tab = 1"><a href="######">Home</a></li>
-							<li class="navBarBtns"ng-click="tab = 2"><a href="######">About</a></li>
-							<li class="navBarBtns"ng-click="tab = 3"><a href="######">My Craftbox</a></li>
-							<li class="navBarBtns"ng-click="tab = 3"><a href="######">Submit a Craft!</a></li>
-
-								<!-- <li ng-click="tab = 4"><a href="######">Holiday Crafts</a></li> -->
-						</ul>
-							<ul class="nav navbar-nav navbar-right col-md-3 col-md-offset-3 ">
-								
-								<li class="pull-right"><a ng-click="open($index)" data-toggle="modal" data-target="#logIn" class="pull-right" href="#">Log in</a></li>
-								<li class="pull-right"><a ng-click="open($index)" data-toggle="modal" data-target="#signUp"class="pull-right" href="#">Sign Up</a></li>
-								
-							</ul>
-		    		</div>
-				</div>
-			</div>
-	  <!--=============================LOG IN MODAL===============================-->
-	  	<div id="logIn" class=" container modal fade">
-	    	<div class="modal-dialog">
-	        	<div class="modal-content">
-	        		<div class="modal-header">
-	            		<h3>Log In</h3>
-	        		</div>
-	        		<div class="modal-body">
-			            <form class="login" name="login">
-				            <label class="label" for="email">Email:</label><br>
-				            <input type="text login" name="email" size="50"><br>
-				            <label class="label" for="password">Password:</label><br>
-				            <input type="password login" name="password" size="50" ><br>
-		        		</form>
-    				</div>
-	        			<div class="modal-footer">
-	                		<input class="btn btn-success" type="submit" value="Submit" id="submit">       
-	                		<input class="btn btn-default" type="button" data-dismiss="modal" aria-hidden="true" value="Close" id="close">
-	        			</div>
-	        	</div>
-	        </div>
-	    </div>
-	<!--=============================SIGN UP MODAL================================-->
-
-	<div id="signUp" class=" container modal fade">
-	    	<div class="modal-dialog">
-	        	<div class="modal-content">
-	        		<div class="modal-header">
-	            		<h3>Sign Up</h3>
-	        		</div>
-	        		<div class="modal-body">
-			            <form class="signup" name="signup">
-				            <label class="label signup1" for="firstName">First Name:</label>
-				            <input class="signup2"type="text" name="firstName" size="50"><br>
-				            <label class="label signup1" for="lastName">Last Name:</label>
-				            <input class="signup2"type="text" name="lastName" size="50"><br>
-				            <label class="label signup1" for="email">Email:</label>
-				            <input class="signup2" type="text" name="email" size="50"><br>
-				            <label class="label signup1" for="password">Password:</label>
-				            <input class="signup2" type="password" name="password" size="50" ><br>
-				            <label class="label signup1" for="confirm">Confirm Password:</label>
-				            <input class="signup2" type="password" name="confirm" size="50" ><br>
-		        		</form>
-    				</div>
-	        			<div class="modal-footer">
-	                		<input class="btn btn-success" type="submit" value="Submit" id="submit">       
-	                		<input class="btn btn-default" type="button" data-dismiss="modal" aria-hidden="true" value="Close" id="close">
-	        			</div>
-	        	</div>
-	        </div>
-	    </div>
 <!-- ================================================================================= -->
-		<div >
+		<div>
 			<p class="craftHeader">Enter your original craft below</p>	
-		</div>
+		
 			<form class="col-sm-8 col-sm-offset-2">
 			    
-			    <div class="form-group">
+			    <div class="form-group craftform">
 			        <label for="craftName">Craft Name:</label>
 			        <input type="text" class="form-control" id="craftName" placeholder="Enter name of craft" >
 			    </div><br/>
-			    <div class="form-group">
+			    <div class="form-group craftform">
 			        <label for="craftMaterials">Materials:</label>
 			        <textarea type="text" class="form-control" id="craftMaterials" placeholder="Enter materials (with amount) AND separate materials with a COMMA..." ></textarea>
 			    </div><br/>
-			    <div class="form-group" >
+			    <div class="form-group craftform" >
 			        <label for="craftInstructions">Instructions:</label>
 			        <textarea ng-repeat="object in steps" type="text" class="form-control" id="craftInstructions" placeholder="Enter one step in each box" ng-model="object.text"></textarea><br/>
 			        <button class="btn btn-small btn-default pull-right" ng-click="add()">Add a Step</button>
@@ -132,10 +25,4 @@
 			    <button type="submit" class="btn btn-default craftSubmitBtn pull-right" ng-click="">Submit</button>
 
 			</form>
-
-
-
-	<script type="text/javascript" src="/js/main.js"></script>
-	</body>
-</html>
-
+			</div>

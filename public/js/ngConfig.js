@@ -1,26 +1,26 @@
 // angular.module('craftApp', ['ui.router'])
 
 // angular.module('craftApp')
-// 	.config(['$stateProvider', function($stateProvider){
-// 		$stateProvider
-// 		.state('home', {
+// 	.config(['$routeProvider', function($routeProvider){
+// 		$routeProvider
+// 		.when('home', {
 // 			url			:'/home',
 // 			templateUrl	:'/html/index.html',
 // 			controller	:'mainController'
 // 		})
-// 		.state('login', {
+// 		.when('login', {
 // 			url			:'/auth/login',
-// 			templateUrl	:'',
+// 			templateUrl	:'html/login.html',
 // 			controller	:'mainController'
 // 		})
-// 		.state('signup', {
+// 		.when('signup', {
 // 			url			:'/signup',
-// 			templateUrl	:'',
+// 			templateUrl	:'html/signup.html',
 // 			controller	:'mainController'
 // 		})
-// 		.state('craft', {
+// 		.when('craft', {
 // 			url			:'/craft',
-// 			templateUrl	:'',
+// 			templateUrl	:'html/craft.html',
 // 			controller	:'craftController'
 // 		})
 // 	}])

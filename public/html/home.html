@@ -1,0 +1,82 @@
+
+		<!--+++++++++++++++++++++++++++CRAFT SEARCH FORM++++++++++++++++++++++++++++++-->
+		<div class="craftFinder">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12 text-left indentParagraph1" >
+						<div class="buildACraft">Build-A-Craft<span class="small">(find crafts with supplies you have on hand)</span> </div>
+							<p class="indentParagraph2" >Add your supplies here: </p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	<div class="container-fluid suppliesSearch">
+		<form>
+			<div class="row">
+				<div class="form-group col-md-3" >
+					<select class="select-style"ng-model="material01" ng-options="material as material.name for material in materials" ng-change="projectMaterials($index)" id="inputIngredient">
+					</select>
+				</div>
+					
+				<div class="form-group col-md-3" >
+					<select class="select-style"ng-model="material02" ng-options="material as material.name for material in materials"  id="inputIngredient">
+					</select>
+				</div>
+					
+				<div class="form-group col-md-3" >
+					<select class="select-style"ng-model="material03" ng-options="material as material.name for material in materials"  id="inputIngredient">
+					</select>
+				</div>
+
+				<div class="form-group col-md-3" >
+					<button class="btn btn-default submitSupplies" ng-click="submitProject()" href="#" role="button">Submit</button>
+				</div>	
+			</div>
+		</form>		
+	</div>
+
+	<!--I don't know how to add space between sections so I did the hack below for now-->
+
+		<div style="margin-top:20px"></div>
+
+	 <!---check divs above this line-->
+
+	<!--===============================CRAFT THUMBNAILS=============================-->
+		
+		<div class="container craftsss">
+			<div class="row">
+				<div ng-repeat="object in crafts"  class="col-md-4 craftDisplay">
+					<div ng-show="object.craftDisplay">
+						<a href="#/crafts/{{object._id}}"><img class ="thumbnail" ng-src="{{object.craftThumbnail}}"/></a>
+						<div class= "craftTitle">{{object.craftName}}</div> 
+					</div>
+				</div>
+			</div>
+		</div>	
+		<!--===================Craft Modal===================================-->
+			
+
+	<div id="craftModal" class=" container modal fade">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                	<h3>{{selectedCraft.craftName}}</h3>
+				 			<img class = "thumbnail" ng-src="{{selectedCraft.craftThumbnail}}"/>
+	            </div>
+	            <div class="modal-body">
+	            	<ul ng-repeat="craft in selectedCraft.craftDirections">
+				 		<li class="description">{{craft}}</li>
+				 	</ul>
+	            </div>
+	            <div class="modal-footer">
+	                <button class="btn btn-success" type="button">Add to My Craft Box</button>
+	         		<button class="btn btn-default close" type="button" data-dismiss="modal" aria-hidden="true">Done</button>
+	            
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	                               		

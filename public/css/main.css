@@ -3,13 +3,17 @@
 
 }
 body {
+	position: relative;
 	padding-top: 6rem;
+	padding-bottom: 70px;
 }
 
 .spacer {
 	padding-top: 10rem;
 }
-
+.overflowHidden {
+	overflow: hidden;
+}
 .navbar-default .navbar-nav > li > a {
     color: #FFFFFF;
     margin-top: 1.5rem;
@@ -133,6 +137,7 @@ font-weight: normal;
 	padding: 0;
 	vertical-align: top;
 	text-align: center;
+	height: 380px;
 
 	/*margin-left: 50px;*/
 }
@@ -226,18 +231,26 @@ font-weight: normal;
 	text-align: center;
 }
 */
-
+.craftform {
+	width: 100%;
+}
 .form-group {
 	/*margin: 10px;*/
 	display: inline-block;
 	left: 140px;
+	
 	/*padding: 40px;*/
 
 }
 
 
 
-
+.panel-footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	margin: 0;
+}
 
 
 
