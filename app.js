@@ -5,7 +5,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var uiRouter = require('angular-ui-router');
+// var uiRouter = require('angular-ui-router');
 var mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/scrapz')
 
@@ -73,8 +73,10 @@ app.get('/crafts/:id', function(req, res){
   res.sendFile('/html/craft.html', {root : './public'})
 });
 
-app.get('/api/crafts/:craftID', function(req, res){
-  Craft.findOne({_id : req.params.craftID}, function(err, craft){
+app.get('/api/crafts/:CraftID', function(req, res){
+  // console.log('/api/crafts/:craftID')
+  db.Craft.findOne({_id : req.params.craftID}, function(err, craft){
+   
    res.send(craft) 
 
   })

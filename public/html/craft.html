@@ -19,7 +19,7 @@
 
 	<!-- ====================Fixed navigation bar=======================================-->
 
-		<div ng-controller="mainController" class="logoContainer"><img class="mainLogo" src="media/ScapzLightLogo.png" /></div>
+		<div ng-controller="mainController" class="logoContainer"><img class="mainLogo" src="/media/ScapzLightLogo.png" /></div>
 			<div class="navbar navbar-default" role="navigation">
 		  		<div class="container-fluid">
 		  			<div class="navbar-header">
@@ -54,11 +54,11 @@
 			<div class="spacer"></div>
 <!-- ==================================================================================== -->
 		<div ng-controller="craftController">
-			{{Craft.craftThumbnail}}
-			{{Craft.craftName}}
-			{{Craft.craftMaterials}}
-			{{Craft.craftDirections}}
-			{{Craft.craftDisplay}}
+			<div>{{craft[0].craftThumbnail}}</div>
+			<div>{{craft[0].craftName}}</div>
+			<div>{{craft[0].craftMaterials}}</div>
+			<div>{{craft[0].craftDirections}}</div>
+			<div>{{craft[0].craftDisplay}}</div>
 
 		</div>
 

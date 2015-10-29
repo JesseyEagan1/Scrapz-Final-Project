@@ -121,9 +121,10 @@ angular.module('craftApp').controller('mainController', ['$scope', '$modal', 'ma
 
 		mainFactory.crafts().then( function(returnData){
 			$scope.crafts = returnData.data 
+			// console.log('This is $scope.crafts', $scope.crafts)
 		})
 
-		console.log('This is $scope.crafts', $scope.crafts)
+		
 	// $scope.crafts =  [
 	// 	{
 	// 		craftThumbnail	: 'media/Hope.jpg',
@@ -249,16 +250,22 @@ angular.module('craftApp').controller('mainController', ['$scope', '$modal', 'ma
 }]);
 
 
-angular.module('craftApp').controller('craftController', ['$scope', '$http', function($scope, $http) {
+angular.module('craftApp').controller('craftController', ['$scope', '$http', 'mainFactory', function($scope, $http, mainFactory) {
 	
 	var idLocation = window.location.href.split('/');
-	var CraftID = idLocation[0]
+	console.log(idLocation)
+	var CraftID = idLocation[4]
 
-$http.get('api/crafts/' + craftID).then(function (returnData){
+$http.get('/api/crafts/' + CraftID).then(function (returnData){
 	$scope.crafts = returnData.data
 });
 
+$scope.crafts = [];
 
+		mainFactory.crafts().then( function(returnData){
+			$scope.crafts = returnData.data 
+			console.log('This is $scope.crafts', $scope.crafts)
+		})
 
 
 
