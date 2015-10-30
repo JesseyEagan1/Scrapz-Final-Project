@@ -48,12 +48,12 @@ angular.module('craftApp')
 		})
 		.when('/submitacraft', {
 			templateUrl	:'/html/craftform.html',
-			controller	:'mainController'
+			controller	:'craftController'
 		})
-		.when('/login', {
-			templateUrl	:'/html/login.html',
-			controller	:'mainController'
-		})
+		// .when('/login', {
+		// 	templateUrl	:'/html/login.html',
+		// 	controller	:'mainController'
+		// })
 		.when('/signup', {
 			templateUrl	:'/html/signup.html',
 			controller	:'mainController'
@@ -64,25 +64,53 @@ angular.module('craftApp')
 		})
 	}])
 
-angular.module('craftApp').controller('mainController', ['$scope', '$http', '$routeParams', 'mainFactory', 'authService',  function($scope, $http, $routeParams, mainFactory, authService ) {
+angular.module('craftApp').controller('mainController', ['$scope', '$http', '$location','$routeParams', 'mainFactory', 'authService',  function($scope, $http, $location, $routeParams, mainFactory, authService ) {
+
 		console.log('AUTH', authService)
 				
-				authService.authCheck(function(user){
-					console.log('USER!', user)
-					$scope.user = user
-				})
+		authService.authCheck(function(user){
+			$scope.user = user
+			console.log('USER!', $scope)
+			$scope.$parent.user = $scope.user
+		})
+		// $scope.$watch('user', function(oldVal, newVal, child){
+		// 	$scope.user = child.user
+		// })
 $scope.signUp = function(){
 	$http.post('/signup', $scope.newUser)
 }
 
-$scope.login = function(){
+$scope.loginStuff = function(){
 	console.log("grenklgreni")
 	$http.post('/login', $scope.loginUser).then(function(returnData){
 		console.log(returnData)
+
+		if(returnData.data.error){
+			//popup sorry :(
+				$scope.errorMessage = 'noooooooo'
+		}
+			else {
+				$('#logIn').modal('hide')
+				//close modal
+				authService.authCheck(function(user){
+					$scope.user = user
+					$scope.$parent.user = $scope.user
+				})
+			}
+
+
 	},function(error){
 		console.log(error)
 	})
 }
+//============LOGOUT============//
+ $scope.logout = function() {
+            $http.get('/logout')
+                .then(function(){
+                    $location.url('/')
+                    $scope.user = false;
+                })
+        }
 //==============================================//
 	$scope.materials = []
 
@@ -238,11 +266,10 @@ $scope.login = function(){
 
 
 
-//======================================Craft Form Inputs===========================//
-	$scope.steps = [{}];
-	$scope.add = function() {
-	    $scope.steps.push({});
-	  };
+
+	
+//==========================Submit A Craft=============================//
+
 
 
 }]);
@@ -259,6 +286,21 @@ $http.get('/api/crafts/' + $routeParams.craftsID).then(function (returnData){
 	console.log($routeParams)
 });
 
+$scope.newCraft = {
+	steps : [{}]
+}
+
+$scope.add = function() {
+	$scope.newCraft.steps.push({});
+};
+$scope.createCraft = function(){
+console.log('bjkguilglyi', $scope.newCraft)
+	$http.post('/api/crafts', $scope.newCraft) //Req TO SERVER
+		.then(function(returnData){ //Res FROM SERVER
+			console.log('Made a craft! ', returnData)
+		})
+
+}
 // $scope.crafts = []; 
 
 
@@ -268,10 +310,7 @@ $http.get('/api/crafts/' + $routeParams.craftsID).then(function (returnData){
 		// })
 
 
-
 }]);
-
-
 
 
 

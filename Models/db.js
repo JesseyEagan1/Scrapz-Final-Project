@@ -6,7 +6,7 @@ var Craft = mongoose.model('Craft', {
 	craftName 		: {type: String, required : true},
 	craftMaterials 	: {type: Array, required : true},
 	craftDirections : {type: Array, required : true},
-	craftDisplay 	: Boolean
+	
 })
 
 var Material = mongoose.model('Material', {

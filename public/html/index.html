@@ -49,8 +49,11 @@
 
 							<ul class="nav navbar-nav navbar-right col-md-6">
 								
-								<li class="pull-right"><a ng-click="open($index)" data-toggle="modal" data-target="#logIn" class="pull-right" href="">Log in</a></li>
-								<li class="pull-right"><a ng-click="open($index)" data-toggle="modal" data-target="#signUp"class="pull-right" href="">Sign Up</a></li>
+								<li ng-show="!user"class="pull-right"><a  data-toggle="modal" data-target="#logIn" href="">Log in</a></li>
+								<li ng-show="!user" class="pull-right"><a data-toggle="modal" data-target="#signUp" href="">Sign Up</a></li>
+								
+								<li ng-show="user" ng-click="logout()"class="pull-right"><a data-toggle="modal"  data-target="#logOut"href="">Log Out</a></li>
+								<li ng-show="user" class="pull-right"><a  data-toggle="modal" data-target="#craftBox" href="">My Craft Box</a></li>
 								
 							</ul>
 		    		</div>
@@ -58,9 +61,9 @@
 			</div>
 			<div class="spacer"></div>
 	  <!--=============================LOG IN MODAL===============================-->
-	  	<div id="logIn" class=" container modal fade">
+	  	<div id="logIn" class=" container modal fade" ng-show="!user">
 	    	<div class="modal-dialog">
-	        	<form class="login" name="login" ng-submit="login()">
+	        	<form class="login" name="login" ng-submit="loginStuff()">
 		        	<div class="modal-content">
 		        		<div class="modal-header">
 		            		<h3>Log In</h3>
@@ -68,13 +71,14 @@
 		        		<div class="modal-body">
 				            
 					            <label class="label" for="email">Email:</label><br>
-					            <input ng-model="loginUser.email" type="text" name="email" size="50"><br>
+					            <input ng-model="loginUser.username" type="text" name="email" size="50"><br>
 					            <label class="label" for="password">Password:</label><br>
 					            <input ng-model="loginUser.password" type="password" name="password" size="50" ><br>
 			        		
 	    				</div>
 		        			<div class="modal-footer">
-		                		<input class="btn btn-success" type="submit" value="Submit" id="submit" data-dismiss="modal">       
+		        				{{errorMessage}}
+		                		<input class="btn btn-success" type="submit" value="Submit" id="submit" >       
 		                		<input class="btn btn-default" type="button" data-dismiss="modal" aria-hidden="true" value="Close" id="close">
 		        			</div>
 		        	</div>

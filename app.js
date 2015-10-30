@@ -48,7 +48,7 @@ app.use(passport.session());
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
-        db.User.findOne({ username: username }, function (err, user) {
+        db.User.findOne({ email: username }, function (err, user) {
             if (err) { return done(err); }
             if (!user) {
                 return done(null, false, { message: 'Incorrect username.' });
@@ -82,7 +82,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/users', users);
 
 
-
+// var craftCtrl = require('/html/main.js')
 // This route is designed to send back the logged in user (or undefined if they are NOT logged in)
 app.get('/api/me', function(req, res){
   res.send(req.user)
@@ -132,20 +132,43 @@ app.post('/signup', function(req, res){
     })
 })
 
-app.post('/login', function(req, res){
-  console.log("string", req.body)
+app.post('/login', function(req, res, next){
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { return next(err); }
+    if (!user) { return res.send({error : 'something went wrong :('}); }
+    req.logIn(user, function(err) {
+        if (err) { return next(err); }
+        return res.send({success: req.user });
+    });
+  })(req, res, next);
 
 })
-// ***** IMPORTANT ***** //
-// By including this middleware (defined in our config/passport.js module.exports),
-// We can prevent unauthorized access to any route handler defined after this call
-// to .use()
-// app.use(passportConfig.ensureAuthenticated);
+app.get('/logout', function(req, res){
+  req.logout();
+  res.send('goodbye');
+});
+
+app.post('/api/crafts', function(req, res){
+  var newCraft = new db.Craft({
+    craftThumbnail    : req.body.craftThumbnail,
+    craftName      : req.body.craftName,
+    craftMaterials        : req.body.craftMaterials.split(', '),
+    craftDirections   : req.body.steps,
+    
+  })
+
+  newCraft.save( function(err, doc){
+    res.send(doc)
+  } )
+
+});
 
 
 app.get('/', function(req, res){
   res.sendFile('/html/index.html', {root : './public'})
 });
+
+
 // app.get('/superSensitiveDataRoute')
 
 // catch 404 and forward to error handler

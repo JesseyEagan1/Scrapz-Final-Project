@@ -3,26 +3,30 @@
 		<div>
 			<p class="craftHeader">Enter your original craft below</p>	
 		
-			<form class="col-sm-8 col-sm-offset-2">
+			<form class="col-sm-8 col-sm-offset-2" ng-submit="createCraft()">
 			    
 			    <div class="form-group craftform">
 			        <label for="craftName">Craft Name:</label>
-			        <input type="text" class="form-control" id="craftName" placeholder="Enter name of craft" >
+			        <input ng-model="newCraft.craftName"type="text" class="form-control" id="craftName" placeholder="Enter name of craft" >
 			    </div><br/>
+			    
 			    <div class="form-group craftform">
 			        <label for="craftMaterials">Materials:</label>
-			        <textarea type="text" class="form-control" id="craftMaterials" placeholder="Enter materials (with amount) AND separate materials with a COMMA..." ></textarea>
+			        <textarea ng-model="newCraft.craftMaterials"type="text" class="form-control" id="craftMaterials" placeholder="Enter materials (with amount) AND separate materials with a COMMA..." ></textarea>
 			    </div><br/>
+			    
 			    <div class="form-group craftform" >
 			        <label for="craftInstructions">Instructions:</label>
-			        <textarea ng-repeat="object in steps" type="text" class="form-control" id="craftInstructions" placeholder="Enter one step in each box" ng-model="object.text"></textarea><br/>
+			        <textarea ng-model="object.step"ng-repeat="object in newCraft.steps" type="text" class="form-control" id="craftInstructions" placeholder="Enter one step in each box" ng-model="object.text"></textarea><br/>
 			        <button class="btn btn-small btn-default pull-right" ng-click="add()">Add a Step</button>
 			    </div><br/>
+			    
 			    <div>
 			    	<label for="craftPic">Upload a picture of your craft (required):</label>
-			    	<input type="file" name="craftPic">
+			    	<input ng-model="newCraft.craftThumbnail"type="text" name="craftPic">
 			    </div><br/>
+			    
 			    <button type="submit" class="btn btn-default craftSubmitBtn pull-right" ng-click="">Submit</button>
 
 			</form>
-			</div>
+		</div>
