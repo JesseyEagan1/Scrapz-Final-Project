@@ -1,11 +1,26 @@
 
 <!-- ==================================================================================== -->
-		<div>
-			<img src="{{crafts.craftThumbnail}}" height="250px" width="250px" />
-			<div>{{crafts.craftName}}</div>
-			<div>{{crafts.craftMaterials}}</div>
-			<div>{{crafts.craftDirections}}</div>
-			<div>{{crafts.craftDisplay}}</div>
+		<div class="container">
+			<img src="{{thisCraft.craftThumbnail}}" height="250px" width="250px" />
+			
+			<div class="craftTitle">{{thisCraft.craftName}}</div>
+			
+			<div>
+			<p class="craftMaterialHeading">Materials Needed:</p>
+				<ul>
+					<li class="materialContents" ng-repeat="material in thisCraft.craftMaterials">{{material}}</li>
+				</ul>
+			</div>
+			
+			<div>
+				<p class="craftDirectionsHeading">Directions:</p>
+				<ol>
+					<li class="directionsContents" ng-repeat="step in thisCraft.craftDirections">{{step}}</li>
+				</ol>
+			</div>
+			
+			
+			<!-- <div>{{crafts.craftDisplay}}</div> -->
 
 		</div>
 

@@ -212,7 +212,7 @@ $scope.loginStuff = function(){
 
 		mainFactory.crafts().then( function(returnData){
 			$scope.crafts = returnData.data 
-			// console.log('This is $scope.crafts', $scope.crafts)
+			console.log('This is $scope.crafts', $scope.crafts)
 		})
 
 		
@@ -254,7 +254,9 @@ $scope.loginStuff = function(){
 		}
 
 		
-	}
+	}//===============================Craft Page Layout===============//
+
+
 
 //=========================================================================//
 	$scope.open = function (index) {
@@ -282,8 +284,8 @@ angular.module('craftApp').controller('craftController', ['$scope', '$http', '$r
 	var CraftID = idLocation[4]
 
 $http.get('/api/crafts/' + $routeParams.craftsID).then(function (returnData){
-	$scope.crafts = returnData.data
-	console.log($routeParams)
+	$scope.thisCraft = returnData.data
+	console.log(returnData.data)
 });
 
 $scope.newCraft = {

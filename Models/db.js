@@ -1,5 +1,8 @@
 var mongoose = require('mongoose')
 
+//uncomment below in order to seed the database
+//mongoose.connect('mongodb://localhost/scrapz')
+
 
 var Craft = mongoose.model('Craft', {
 	craftThumbnail 	: {type: String, required : true},

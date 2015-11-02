@@ -255,10 +255,39 @@ font-weight: normal;
 
 
 
+.aboutTitle {
+	text-align: center;
+	margin: 0 auto;
+	font-size: 32px;
+	margin-top: 3rem;
+}
+.aboutParagraph {
+	font-size: 20px;
+	margin-top: 2rem;
+}
 
+.craftMaterialHeading {
+	margin-top: 2rem;
+	font-size: 20px;
+	font-weight: bold;
+}
 
+.craftDirectionsHeading {
+	margin-top: 2rem;
+	font-size: 20px;
+	font-weight: bold;
 
+}
 
+.materialContents {
+	font-size: 16px;
 
+}
+
+.directionsContents {
+	font-size: 16px;
+	
+
+}
 
 
