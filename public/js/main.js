@@ -77,6 +77,7 @@ angular.module('craftApp').controller('mainController', ['$scope', '$http', '$lo
 		// 	$scope.user = child.user
 		// })
 $scope.signUp = function(){
+	console.log('sign up?')
 	$http.post('/signup', $scope.newUser).then(function(data){
 		console.log(data)
 	},function(data){

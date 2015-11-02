@@ -89,7 +89,7 @@
 
 	<div id="signUp" class=" container modal fade">
 	    	<div class="modal-dialog">
-	        	<form class="signup" name="signup" ng-submit="signUp()">
+	        	<form class="signup" name="signup">
 		        	<div class="modal-content">
 		        		<div class="modal-header">
 		            		<h3>Sign Up</h3>
@@ -109,7 +109,7 @@
 			        		
 	    				</div>
 		        			<div class="modal-footer">
-		                		<input class="btn btn-success" type="submit" value="Submit" id="submit" data-dismiss="modal">       
+		                		<input ng-click="signUp()" class="btn btn-success" type="submit" value="Submit" id="submit" data-dismiss="modal">       
 		                		<input class="btn btn-default" type="button" data-dismiss="modal" aria-hidden="true" value="Close" id="close">
 		        			</div>
 		        	</div>
