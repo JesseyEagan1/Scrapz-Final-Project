@@ -293,6 +293,7 @@ font-weight: normal;
 @media(max-width: 767px) {
 	.logoContainer {
 		margin-left: 5%;
+		max-width: 150px;
 	
 	}
 
