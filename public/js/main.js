@@ -62,6 +62,10 @@ angular.module('craftApp')
 			templateUrl	:'/html/craft.html',
 			controller	:'craftController'
 		})
+		.when('/craftBox', {
+			templateUrl	:'/html/craftBox.html',
+			controller	:'mainController'
+		})
 	}])
 
 angular.module('craftApp').controller('mainController', ['$scope', '$http', '$location','$routeParams', 'mainFactory', 'authService',  function($scope, $http, $location, $routeParams, mainFactory, authService ) {
@@ -108,6 +112,8 @@ $scope.loginStuff = function(){
 		console.log(error)
 	})
 }
+
+
 //============LOGOUT============//
  $scope.logout = function() {
             $http.get('/logout')
@@ -298,7 +304,13 @@ $scope.loginStuff = function(){
 		else { return false }
 	}
 
-
+//==========================My Craft Box================================//
+// $scope.saveCraft = function(){
+//             $http.post('/api/myCraftBox', $scope.user)
+//                 .then(function(){
+//                     alert('Craft saved to your craft box!')
+//                 })
+//         }
 	
 //==========================Submit A Craft=============================//
 

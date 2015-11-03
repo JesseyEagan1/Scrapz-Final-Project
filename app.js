@@ -169,37 +169,12 @@ app.get('/', function(req, res){
 
 app.post('/api/craft-search', modelController.craftSearch);
 
-// app.get('/superSensitiveDataRoute')
+// app.post("/api/myCraftBox", function(req, res){
+//     User.update({_id: request.user._id}, request.body, function(err, apiResponse){
+//         response.send('good job saving more info')
+//     })
+// })
 
-// catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   var err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// });
-
-// error handlers
-
-// development error handler
-// will print stacktrace
-// if (app.get('env') === 'development') {
-//   app.use(function(err, req, res, next) {
-//     res.status(err.status || 500);
-//     res.sendFile('error.html', {
-//       root : './public/html'
-//     });
-//   });
-// }
-
-// // production error handler
-// // no stacktraces leaked to user
-// app.use(function(err, req, res, next) {
-//   res.status(err.status || 500);
-//   res.render('error', {
-//     message: err.message,
-//     error: {}
-//   });
-// });
 
 // Creating Server and Listening for Connections \\
 var port = 80

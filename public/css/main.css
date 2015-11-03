@@ -294,6 +294,12 @@ font-weight: normal;
 
 }
 
+.craftBoxButton {
+	background-color: #95D5D7;
+	padding: 10px;
+	color: white;
+}
+
 @media(max-width: 767px) {
 	.logoContainer {
 		margin-left: 5%;
@@ -302,7 +308,6 @@ font-weight: normal;
 	
 	}
 	.mainLogo {
-	
 	max-width: 100px;
 	margin-top: 50px;
 }
@@ -313,8 +318,7 @@ font-weight: normal;
 		float: none !important;
 	}
 	.craftSearchDropDowns {
-	
-	left: 0px;
+		left: 0px;
 	}
 }
 
