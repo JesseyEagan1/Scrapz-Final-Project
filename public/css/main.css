@@ -299,6 +299,9 @@ font-weight: normal;
 	padding: 10px;
 	color: white;
 }
+.craftBox {
+	text-align: center;
+}
 
 @media(max-width: 767px) {
 	.logoContainer {
