@@ -242,7 +242,7 @@ font-weight: normal;
 .craftform {
 	width: 100%;
 }
-.form-group {
+.craftSearchDropDowns {
 	/*margin: 10px;*/
 	display: inline-block;
 	left: 140px;
@@ -311,6 +311,10 @@ font-weight: normal;
 	}
 	.nav-right {
 		float: none !important;
+	}
+	.craftSearchDropDowns {
+	
+	left: 0px;
 	}
 }
 
