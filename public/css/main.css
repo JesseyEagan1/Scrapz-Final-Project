@@ -296,5 +296,10 @@ font-weight: normal;
 		margin-top: 50px;
 	
 	}
+	.mainLogo {
+	
+	max-width: 100px;
+	margin-top: 50px;
+}
 
 }
