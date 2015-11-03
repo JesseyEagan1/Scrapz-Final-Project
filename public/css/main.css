@@ -31,8 +31,16 @@ body {
 	font-size: 22px;
 	border-radius: 0;
 	height: 8rem;
+	z-index: 8;
 
 
+}
+.navbar-collapse {
+	background : #95D5D7;
+}
+
+.nav-right {
+	float: right !important;
 }
 /*.brand {
     position: absolute;
@@ -244,15 +252,12 @@ font-weight: normal;
 }
 
 
-
 .panel-footer {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
 	margin: 0;
 }
-
-
 
 
 .aboutTitle {
@@ -292,14 +297,21 @@ font-weight: normal;
 @media(max-width: 767px) {
 	.logoContainer {
 		margin-left: 5%;
-		max-width: 100px;
-		margin-top: 50px;
+		/*max-width: 100px;
+		margin-top: 50px;*/
 	
 	}
 	.mainLogo {
 	
 	max-width: 100px;
-	margin-top: 0px;
+	margin-top: 50px;
+}
+	.navbar-nav > li > a {
+		text-align: right;
+	}
+	.nav-right {
+		float: none !important;
+	}
 }
 
-}
+
