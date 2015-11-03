@@ -13,6 +13,7 @@ var bcrypt = require('bcryptjs')
 
 var db = require('./Models/db.js')
 
+var modelController = require('./Models/modelController.js')
 var app = express();
 
 
@@ -166,6 +167,7 @@ app.get('/', function(req, res){
   res.sendFile('/html/index.html', {root : './public'})
 });
 
+app.post('/api/craft-search', modelController.craftSearch);
 
 // app.get('/superSensitiveDataRoute')
 

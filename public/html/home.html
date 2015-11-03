@@ -16,22 +16,22 @@
 		<form>
 			<div class="row">
 				<div class="form-group col-md-3" >
-					<select class="select-style"ng-model="material01" ng-options="material as material.name for material in materials" ng-change="projectMaterials($index)" id="inputIngredient">
+					<select class="select-style"ng-model="craftSearchForm.material01" ng-options="material as material.name for material in materials" ng-change="projectMaterials($index)" id="inputIngredient">
 					</select>
 				</div>
 					
 				<div class="form-group col-md-3" >
-					<select class="select-style"ng-model="material02" ng-options="material as material.name for material in materials"  id="inputIngredient">
+					<select class="select-style"ng-model="craftSearchForm.material02" ng-options="material as material.name for material in materials"  id="inputIngredient">
 					</select>
 				</div>
 					
 				<div class="form-group col-md-3" >
-					<select class="select-style"ng-model="material03" ng-options="material as material.name for material in materials"  id="inputIngredient">
+					<select class="select-style"ng-model="craftSearchForm.material03" ng-options="material as material.name for material in materials"  id="inputIngredient">
 					</select>
 				</div>
 
 				<div class="form-group col-md-3" >
-					<button class="btn btn-default submitSupplies" ng-click="submitProject()" href="#" role="button">Submit</button>
+					<button class="btn btn-default submitSupplies" ng-click="submitProject()" role="button">Submit</button>
 				</div>	
 			</div>
 		</form>		
@@ -47,7 +47,7 @@
 		
 		<div class="container craftsss">
 			<div class="row">
-				<div ng-repeat="object in crafts"  class="col-md-4 craftDisplay">
+				<div ng-repeat="object in crafts | filter : craftFilter"  class="col-md-4 craftDisplay">
 					<div >
 						<a href="#/crafts/{{object._id}}"><img class ="thumbnail" ng-src="{{object.craftThumbnail}}"/></a>
 						<div class= "craftTitle">{{object.craftName}}</div> 

@@ -227,36 +227,41 @@ $scope.loginStuff = function(){
 
 
 //==================Submit from Dropdowns=================//
+	
 	$scope.submitProject = function() {
-		$scope.project = []
-		
-		$scope.project.push($scope.material01)
-		$scope.project.push($scope.material02)
-		$scope.project.push($scope.material03)
+		$http.post('/api/craft-search', $scope.craftSearchForm).then(function(returnData){
+			console.log(returnData.data)
+		})
+		console.log($scope.craftSearchForm)
+	// 	$scope.project = []
+	// 	//console.log('++++++', $scope.project)
+	// 	$scope.project.push($scope.material01)
+	// 	$scope.project.push($scope.material02)
+	// 	$scope.project.push($scope.material03)
 
 
-		for(var i = 0; i < $scope.crafts.length; i++) {
-			$scope.crafts[i].craftDisplay = false
-			var craftList = []
+	// 	for(var i = 0; i < $scope.crafts.length; i++) {
+	// 		$scope.crafts[i].craftDisplay = false
+	// 		var craftList = []
 
-			for(var j = 0; j < $scope.crafts[i].craftMaterials.length; j++) {
+	// 		for(var j = 0; j < $scope.crafts[i].craftMaterials.length; j++) {
 
 
-				for(var k = 0; k < $scope.project.length; k++) {
+	// 			for(var k = 0; k < $scope.project.length; k++) {
 					
-					if($scope.project[k].name === $scope.crafts[i].craftMaterials[j]) {
-						// $scope.crafts[i].craftDisplay = true
-						craftList.push($scope.project[k].name)
+	// 				if($scope.project[k].name === $scope.crafts[i].craftMaterials[j]) {
+	// 					//$scope.crafts[i].craftDisplay = true
+	// 					craftList.push($scope.project[k].name)
 
-					}
+	// 				}
 
-				}
-			}
-			console.log(craftList)
-			if(craftList.length >= 2) {
-				$scope.crafts[i].craftDisplay = true
-			}
-		}
+	// 			}
+	// 		}
+	// 		console.log('++++++++++++++++++', craftList)
+	// 		if(craftList.length >= 2) {
+	// 			$scope.crafts[i].craftDisplay = true
+	// 		}
+	// 	}
 
 		
 	}//===============================Craft Page Layout===============//
@@ -269,9 +274,29 @@ $scope.loginStuff = function(){
 		//console.log($scope.selectedCraft)
 	
 	}
-
-
-
+	$scope.craftSearchForm = {
+		material01 : { name : '' },
+		material02 : { name : '' },
+		material03 : { name : '' },
+	}
+	$scope.craftFilter = function(element){
+			// console.log($scope.craftSearchForm)
+		if ( !$scope.craftSearchForm.material01.name ){
+			return true
+		}
+		var matchRating = 0
+		if ( element.craftMaterials.indexOf($scope.craftSearchForm.material01.name) > -1){
+			matchRating++
+		}
+		if ( element.craftMaterials.indexOf($scope.craftSearchForm.material02.name) > -1){
+			matchRating++
+		}
+		if ( element.craftMaterials.indexOf($scope.craftSearchForm.material03.name) > -1){
+			matchRating++
+		}
+		if ( matchRating >= 2 ) { return true }
+		else { return false }
+	}
 
 
 	
