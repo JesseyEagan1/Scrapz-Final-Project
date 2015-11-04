@@ -338,10 +338,11 @@ $scope.add = function() {
 	$scope.newCraft.steps.push({});
 };
 $scope.createCraft = function(){
-console.log('bjkguilglyi', $scope.newCraft)
+//console.log('bjkguilglyi', $scope.newCraft)
 	$http.post('/api/crafts', $scope.newCraft) //Req TO SERVER
 		.then(function(returnData){ //Res FROM SERVER
 			console.log('Made a craft! ', returnData)
+			window.location.href = '/';
 		})
 
 }
